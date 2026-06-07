@@ -10,6 +10,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("Portfolio Backend is Running 🚀");
+});
+
+
 mongoose.connect("mongodb+srv://admin:admin123@cluster0.8iwinws.mongodb.net/portfolioDB?retryWrites=true&w=majority")
 .then(() => console.log("MongoDB Connected"))
 .catch(err => console.log(err));
@@ -74,7 +79,8 @@ app.get("/add-demo", async (req, res) => {
     res.status(500).send(error.message);
   }
 });
+const PORT = process.env.PORT || 5000;
 
-app.listen(5000, () => {
-  console.log("Server running on port 5000");
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
