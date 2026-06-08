@@ -48,14 +48,7 @@ app.delete("/projects/:id", async (req, res) => {
 
 
 
-app.get("/reset", async (req, res) => {
-  try {
-    await Project.deleteMany({});
-    res.send("All projects deleted successfully");
-  } catch (error) {
-    res.status(500).send(error.message);
-  }
-});
+
 
 app.get("/add-demo", async (req, res) => {
   try {
@@ -79,8 +72,18 @@ app.get("/add-demo", async (req, res) => {
     res.status(500).send(error.message);
   }
 });
+
+app.get("/reset", async (req, res) => {
+  try {
+    await Project.deleteMany({});
+    res.send("All projects deleted successfully");
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log("Server running on port " + PORT);
 });

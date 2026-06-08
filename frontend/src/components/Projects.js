@@ -4,7 +4,7 @@ function Projects() {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    fetch("https://your-backend.onrender.com/projects")
+    fetch("https://portfolio-project-rylp.onrender.com/projects")
       .then(res => res.json())
       .then(data => setProjects(data));
   }, []);
